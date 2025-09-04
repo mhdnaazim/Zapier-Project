@@ -148,3 +148,9 @@
     border-radius: 8px;
     margin-top: 20px;
 }
+
+.login-inputs button:hover{
+    background-color: transparent;
+    color: #fff4e8;
+    border: 1px solid #fff4e8;
+}
