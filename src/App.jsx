@@ -5,6 +5,7 @@ import Login from "./Components/Login";
 import Home from "./Components/Home";
 import { ToastContainer } from "react-toastify";
 import { StoreProvider } from "./Components/Context/StoreContext";
+import Profile from "./Components/Profile";
 
 const App = () => {
   return (
@@ -12,9 +13,10 @@ const App = () => {
       <StoreProvider>
         <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Home/>} /> */}
           <Route path="/" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home/>} />
+          <Route path="/profile" element={<Profile/>} />
         </Routes>
         <ToastContainer
           position="top-center"
