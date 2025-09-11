@@ -23,6 +23,7 @@ const Login = () => {
         )
 
         if (validUser) {
+            localStorage.setItem("LoggedUser", JSON.stringify(validUser))
             toast.success("Login Successful");
             navigate("/home");
         } else {

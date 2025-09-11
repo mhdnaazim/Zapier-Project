@@ -7,8 +7,92 @@
     font-family: "Poppins", sans-serif;
 }
 
-.profile-page{
-    background-color: blanchedalmond;
+.profile-container{
+    /* background-color: blue; */
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-page{
+    /* background-color: yellow; */
+    height: 100vh;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.profile-heads{
+    background-color: lavender;
+    height: min-content;
+    width: 50%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-profile,
+.profile-details
+{
+    /* background-color: red; */
+    height: 400px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 0 20px;
+    gap: 20px;
+    border-radius: 25px;
+    box-shadow: 1px 5px 10px grey;
+}
+
+.profile-details p{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btns{
+    /* background-color: yellow; */
+    height: min-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 25px;
+}
+
+.edit-btn{
+    background-color: rgb(53, 153, 53);
+    color: #fff;
+    height: 40px;
+    width: 120px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.logout-btn,
+.dlt-btn{
+    background-color: red;
+    color: #fff;
+    height: 40px;
+    padding: 0 20px; 
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
 }

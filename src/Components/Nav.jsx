@@ -2,6 +2,8 @@ import React from 'react'
 import './Nav.css'
 import nlogo from '../assets/zap-new.png'
 import cart from '../assets/cart.png'
+import fav from '../assets/favourites.png'
+import wishlist from '../assets/wishlist.png'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Nav = () => {
@@ -21,6 +23,8 @@ const Nav = () => {
           </ul>
         </div>
         <div className="nav-cart">
+          <img src={fav} />
+          <img src={wishlist} />
           <img src={cart} />
           <div className="cart-total">
             <p>1</p>

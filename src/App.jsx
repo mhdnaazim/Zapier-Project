@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { StoreProvider } from "./Components/Context/StoreContext";
 import Signup from "./Components/SignUp";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
-import { ToastContainer } from "react-toastify";
-import { StoreProvider } from "./Components/Context/StoreContext";
-import Profile from "./Components/Profile";
+import ProfileSection from "./Components/ProfileSection";
 
 const App = () => {
   return (
@@ -16,11 +16,11 @@ const App = () => {
           <Route path="/" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<ProfileSection/>} />
         </Routes>
         <ToastContainer
           position="top-center"
-          autoClose={1800}
+          autoClose={1700}
           hideProgressBar={false}
           newestOnTop={true}
           closeOnClick

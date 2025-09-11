@@ -29,10 +29,10 @@ const Signup = () => {
     
     if (password !== confirmPassword) {
         toast.error("Passwords do not match");
-        return; // 
+        return; 
     }
 
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || []
+    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
     const newUser = {username, email, number, password}
     existingUsers.push(newUser);
