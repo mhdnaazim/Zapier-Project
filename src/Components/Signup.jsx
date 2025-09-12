@@ -18,30 +18,41 @@ const Signup = () => {
     })
 
     const handleSignup = () => {
-    const { username, number, email, password, confirmPassword } = formData;
+        const { username, number, email, password, confirmPassword } = formData;
 
-    
-    if (!username || !number || !email || !password || !confirmPassword) {
-        toast.error("Please fill all fields");
-        return;
-    }
 
-    
-    if (password !== confirmPassword) {
-        toast.error("Passwords do not match");
-        return; 
-    }
+        if (!username || !number || !email || !password || !confirmPassword) {
+            toast.error("Please fill all fields");
+            return;
+        }
 
-    const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+        //Email Format 
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            toast.error("Please enter a valid email address");
+            return;
+        }
 
-    const newUser = {username, email, number, password}
-    existingUsers.push(newUser);
+        if (password.length < 8) {
+            toast.error("Password must be at least 8 characters long")
+            return;
+        }
 
-    localStorage.setItem("users", JSON.stringify(existingUsers))
+        if (password !== confirmPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
 
-    toast.success("Signup Successful");
-    navigate("/login");
-};
+        const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+        const newUser = { username, email, number, password }
+        existingUsers.push(newUser);
+
+        localStorage.setItem("users", JSON.stringify(existingUsers))
+
+        toast.success("Signup Successful");
+        navigate("/login");
+    };
 
 
     const handleChange = (e) => {

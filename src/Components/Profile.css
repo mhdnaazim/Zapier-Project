@@ -29,7 +29,7 @@
 }
 
 .profile-heads{
-    background-color: lavender;
+    /* background-color: lavender; */
     height: min-content;
     width: 50%;
     padding: 0 20px;
@@ -50,49 +50,101 @@
     justify-content: center;
     padding: 0 20px;
     gap: 20px;
-    border-radius: 25px;
+    border-radius: 8px;
     box-shadow: 1px 5px 10px grey;
 }
 
 .profile-details p{
     font-size: 18px;
     font-weight: 500;
+    cursor: not-allowed;
 }
 
 .btns{
     /* background-color: yellow; */
-    height: min-content;
-    width: 100%;
+    height: 70px;
+    width: 150px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 25px;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+    margin-top: 10px;
+
 }
 
 .edit-btn{
-    background-color: rgb(53, 153, 53);
-    color: #fff;
-    height: 40px;
-    width: 120px;
+    color: rgb(53, 153, 53);
+    background: transparent;
     border: none;
     outline: none;
-    border-radius: 3px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
 }
 
-.logout-btn,
+.edit-btn:hover,
+.dlt-btn:hover,
+.logout-btn:hover,
+.save-change-btn:hover,
+.cancel-btn:hover
+{
+    transition: 0.1s;
+    transform: scale(1.1);
+}
+
 .dlt-btn{
-    background-color: red;
-    color: #fff;
-    height: 40px;
-    padding: 0 20px; 
+    background-color: transparent;
+    color: red;
     border: none;
     outline: none;
-    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+
+}
+
+.logout-btn{
+    background-color: transparent;
+    color: red;
+    height: 40px;
+    border: none;
+    outline: none;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
 }
+
+.edit-profile label{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.edit-profile input{
+    height: 40px;
+    padding: 15px;
+    margin-left: 10px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid rgb(175, 175, 175);
+}
+
+.save-change-btn,
+.cancel-btn
+{
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.save-change-btn{
+    color: rgb(0, 140, 255);
+}
+
+.cancel-btn{
+    color: red;
+}
+
+

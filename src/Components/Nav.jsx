@@ -5,8 +5,36 @@ import cart from '../assets/cart.png'
 import fav from '../assets/favourites.png'
 import wishlist from '../assets/wishlist.png'
 import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Nav = () => {
+
+  const navigate = useNavigate()
+  const LoggedUser = JSON.parse(localStorage.getItem("LoggedUser"))
+
+  const handleLogin = () => {
+    if(LoggedUser){
+      toast.error("Already Logged")
+    }else{
+      navigate("/login")
+    }
+  }
+
+  const handleRegister = () => {
+    if(LoggedUser){
+      toast.error("Already Logged")
+    }else{
+      navigate("/")
+    }
+  }
+
+  const handleProfile = () => {
+    if(!LoggedUser){
+      toast("Please Login")
+    }else{
+      navigate("/profile")
+    }
+  }
 
   return (
     <>
@@ -16,9 +44,9 @@ const Nav = () => {
         </div>
         <div className="nav-links">
           <ul>
-            <Link to="/login"> <li>LOGIN</li> </Link>
-            <Link to="/"> <li>REGISTER</li> </Link>
-            <Link to="/profile"> <li>PROFILE</li> </Link>
+            <li onClick={handleLogin}>LOGIN</li>
+            <li onClick={handleRegister}>REGISTER</li>
+             <li onClick={handleProfile}>PROFILE</li> 
             <li>ABOUT US</li>
           </ul>
         </div>
