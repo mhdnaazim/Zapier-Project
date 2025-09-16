@@ -6,6 +6,8 @@ import Signup from "./Components/SignUp";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
 import ProfileSection from "./Components/ProfileSection";
+import Adidas from "./Components/Adidas";
+import Nike from "./Components/Nike";
 
 const App = () => {
   return (
@@ -17,9 +19,11 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/profile" element={<ProfileSection/>} />
+          <Route path="/adidas" element={<Adidas/>} />
+          <Route path="/nike" element={<Nike/>} />
         </Routes>
         <ToastContainer
-          position="top-center"
+          position="bottom-left"
           autoClose={1700}
           hideProgressBar={false}
           newestOnTop={true}

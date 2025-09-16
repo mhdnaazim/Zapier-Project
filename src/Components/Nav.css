@@ -9,7 +9,7 @@
 
 .nav-container {
     background-color: #fff;
-    height: 80px;
+    height: 65px;
     width: 85%;
     margin-top: 15px;
     margin-left: 7.5%;
@@ -52,21 +52,25 @@
     display: block;
 }
 
-ul {
+.nav-links ul {
     display: flex;
+    align-items: center;
+    justify-content: center; 
     gap: 60px;
     list-style: none;
-    text-decoration: none;
+    margin: 0;  
+    padding: 0;  
+    height: 100%; 
 }
 
-ul li {
+.nav-links li {
     color: #000;
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
 }
 
-ul li:hover {
+.nav-links li:hover {
     color: #ff4f00;
 }
 

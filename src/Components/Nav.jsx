@@ -20,6 +20,14 @@ const Nav = () => {
     }
   }
 
+  const handleLogo = () => {
+    if(location.pathname === "/home"){
+      window.location.reload();
+    }else{
+      navigate("/home")
+    }
+  }
+
   const handleRegister = () => {
     if(LoggedUser){
       toast.error("Already Logged")
@@ -40,7 +48,7 @@ const Nav = () => {
     <>
       <div className="nav-container">
         <div className="nav-logo">
-          <img src={nlogo} onClick={() => window.location.reload()} />
+          <img src={nlogo} onClick={handleLogo} />
         </div>
         <div className="nav-links">
           <ul>
