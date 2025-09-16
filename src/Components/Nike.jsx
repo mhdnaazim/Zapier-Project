@@ -1,9 +1,13 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
+import NikeBanner from "./NikeBanner";
+import Nav from "./Nav";
  
 const Nike = () => {
     return(
+        <>
         <Nav/>
+        <NikeBanner/>
+        </>
     )
 }
 

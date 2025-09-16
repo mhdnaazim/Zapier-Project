@@ -76,12 +76,12 @@
 }
 
 .sellers-head{
-    background-color: yellow;
+    background-color: lavender;
     height: 15%;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
 }
 
 .sellers-head p{

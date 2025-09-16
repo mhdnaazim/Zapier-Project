@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import ProfileSection from "./Components/ProfileSection";
 import Adidas from "./Components/Adidas";
 import Nike from "./Components/Nike";
+import Puma from "./Components/Puma";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/profile" element={<ProfileSection/>} />
           <Route path="/adidas" element={<Adidas/>} />
           <Route path="/nike" element={<Nike/>} />
+          <Route path="/puma" element={<Puma/>} />
         </Routes>
         <ToastContainer
           position="bottom-left"
