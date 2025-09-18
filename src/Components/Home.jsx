@@ -3,6 +3,7 @@ import './Home.css'
 import Nav from "./Nav";
 import Banner from "./Banner";
 import Landing from "./Landing";
+import Footer from "./Footer";
 
 const Home = () => {
     return(
@@ -10,6 +11,7 @@ const Home = () => {
         <Nav/>
         <Banner/>
         <Landing/>
+        <Footer/>
         </>
     )
 }

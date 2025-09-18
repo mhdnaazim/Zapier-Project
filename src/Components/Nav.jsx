@@ -1,47 +1,62 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Nav.css'
 import nlogo from '../assets/zap-new.png'
 import cart from '../assets/cart.png'
 import fav from '../assets/favourites.png'
 import wishlist from '../assets/wishlist.png'
-import { Link, useNavigate } from 'react-router-dom'
+import search from '../assets/search icon.png'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useStore } from './Context/StoreContext'
 
 const Nav = () => {
 
+  const { query, setQuery } = useStore()
+  const [input, setInput] = useState("")
   const navigate = useNavigate()
   const LoggedUser = JSON.parse(localStorage.getItem("LoggedUser"))
 
   const handleLogin = () => {
-    if(LoggedUser){
+    if (LoggedUser) {
       toast.error("Already Logged")
-    }else{
+    } else {
       navigate("/login")
     }
   }
 
   const handleLogo = () => {
-    if(location.pathname === "/home"){
+    if (location.pathname === "/home") {
       window.location.reload();
-    }else{
+    } else {
       navigate("/home")
     }
   }
 
   const handleRegister = () => {
-    if(LoggedUser){
+    if (LoggedUser) {
       toast.error("Already Logged")
-    }else{
+    } else {
       navigate("/")
     }
   }
 
   const handleProfile = () => {
-    if(!LoggedUser){
+    if (!LoggedUser) {
       toast("Please Login")
-    }else{
+    } else {
       navigate("/profile")
     }
+  }
+
+  const handleInput = (e) => {
+    e.preventDefault()
+    setQuery(input)
+    if (!input.trim()) {
+      toast.error("Please enter something to search")
+      return;
+    }
+    setQuery(input);
+    navigate("/products")
   }
 
   return (
@@ -51,10 +66,14 @@ const Nav = () => {
           <img src={nlogo} onClick={handleLogo} />
         </div>
         <div className="nav-links">
+          <div className="search-input">
+            <input type="text" placeholder='Search here...' value={input} onChange={(e) => setInput(e.target.value)} />
+            <img src={search} onClick={(e) => handleInput(e)} />
+          </div>
           <ul>
             <li onClick={handleLogin}>LOGIN</li>
             <li onClick={handleRegister}>REGISTER</li>
-             <li onClick={handleProfile}>PROFILE</li> 
+            <li onClick={handleProfile}>PROFILE</li>
             <li>ABOUT US</li>
           </ul>
         </div>

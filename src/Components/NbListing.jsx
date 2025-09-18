@@ -1,19 +1,21 @@
 import React from "react";
 import './AdidasListing.css'
-import { nike } from "../Products";
+import { newbalance } from "../Products";
 
-const NikeListing = () => {
+const NbListing = () => {
+    console.log(newbalance,"pp");
+    
     return (
             <>
                 <div className="adidas-home">
                     <div className="adidas-listing-container">
                         <div className="adidas-listing-head">
-                            <p>NIKE</p>
+                            <p>NEW BALANCE</p>
                         </div>
                         <div className="adidas-listing">
-                            {nike.map((item, index) => (
+                            {newbalance.map((item, index) => (
                                 <div key={index} className="adidas-card">
-                                    <img src={item.img} alt={item.name} />
+                                    <img src={item.img} alt={item.title} />
                                     <h4>₹{item.price}</h4>
                                     <p>{item.title}</p>
                                     <button>Add to Cart</button>
@@ -27,4 +29,4 @@ const NikeListing = () => {
         )
 }
 
-export default NikeListing
+export default NbListing

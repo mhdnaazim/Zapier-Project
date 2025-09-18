@@ -21,11 +21,11 @@ const Banner = () => {
 
     return (
         <div className="banner-container">
-            <Carousel 
-                activeIndex={index} 
-                onSelect={handleSelect} 
-                controls={false} 
-                indicators={false} 
+            <Carousel
+                activeIndex={index}
+                onSelect={handleSelect}
+                controls={false}
+                indicators={false}
                 interval={null}  // disable auto timer
             >
                 {/* Video 1 */}

@@ -44,6 +44,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 50px;
+}
+
+.search-input{
+    background-color: rgb(235, 235, 235);
+    height: 40px;
+    width: 300px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px rgb(270, 270, 270);
+    padding-right: 15px;
+}
+
+.search-input input{
+    background-color: rgb(235, 235, 235);
+    height: 100%;
+    width: 260px;
+    font-size: 14px;
+    font-weight: 500;
+    padding-left: 15px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+}
+
+.search-input img{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 }
 
 .nav-links a{

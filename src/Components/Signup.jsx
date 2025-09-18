@@ -7,8 +7,7 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
     const navigate = useNavigate();
-    const { setUser } = useStore();
-
+    
     const [formData, setFormData] = useState({
         username: "",
         number: "",

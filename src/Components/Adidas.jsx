@@ -2,6 +2,7 @@ import React from "react";
 import Nav from "./Nav";
 import AdidasBanner from "./AdidasBanner";
 import AdidasListing from "./AdidasListing";
+import Footer from "./Footer";
 
 const Adidas = () => {
     return(
@@ -9,6 +10,7 @@ const Adidas = () => {
         <Nav/>
         <AdidasBanner/>
         <AdidasListing/>
+        <Footer/>
         </>
     )
 }

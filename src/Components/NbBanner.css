@@ -3,8 +3,8 @@
     padding: 0;
 }
 
-.puma-banner-container{
-    background: url(../assets/puma_Banner.jpg);
+.nb-banner-container{
+    background: url(../assets/nb_banner.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
