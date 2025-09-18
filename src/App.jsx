@@ -11,6 +11,7 @@ import Nike from "./Components/Nike";
 import Puma from "./Components/Puma";
 import NewBalance from "./Components/NewBalance";
 import FilteredProducts from "./Components/FilteredProducts";
+import Cart from "./Components/Cart";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             <Route path="/puma" element={<Puma />} />
             <Route path="/nb" element={<NewBalance />} />
             <Route path="products" element={<FilteredProducts/>} />
+            <Route path="/cart" element={<Cart/>} />
 
           </Routes>
           <ToastContainer

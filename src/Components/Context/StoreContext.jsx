@@ -10,20 +10,60 @@ export const StoreProvider = ({ children }) => {
     const [user, setUser] = useState(data)
     const [query, setQuery] = useState("")
 
+    const CartProducts = JSON.parse(localStorage.getItem("cart")) || []
+    const [cart, setCart] = useState(CartProducts)
+    console.log(cart);
+
+    const addToCart = (item, id) => {
+        const existingItem = cart.find(citem => citem.id === id);
+        if (existingItem) {
+            setCart(prevCart =>
+                prevCart.map(citem =>
+                    citem.id === id
+                        ? { ...citem, quantity: citem.quantity + 1 }
+                        : citem
+                )
+            );
+        } else {
+            setCart(prevCart => [...prevCart, { ...item, id, quantity: 1 }]);
+        }
+    };
+
+
+    const increaseQuantity = (id) => {
+        setCart(prevCart => prevCart.map(citem => {
+            citem.id === id
+                ? { ...citem, quantity: citem.quantity + 1 }
+                : citem
+        }))
+    }
+
+    const decreaseQuantity = (id) => {
+        setCart(prevCart => prevCart.map(citem => {
+            citem.id === id
+                ? { ...citem, quantity: citem.quantity - 1 }
+                : citem
+        }))
+    }
+
+    const clearCart = () => {
+        setCart([])
+    }
 
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user))
-    }, [user])
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [user, cart])
 
     const wrappedProducts = [...adidas, ...nike, ...newbalance, ...puma]
 
     const searchedProducts = wrappedProducts.filter((p) =>
         (p.title).toLowerCase().includes(query.toLowerCase()) ||
         (p.brand).toLowerCase().includes(query.toLowerCase())
-    ) 
+    )
 
     return (
-        <StoreContext.Provider value={{ user, setUser, wrappedProducts, searchedProducts,  query, setQuery }}>
+        <StoreContext.Provider value={{ user, setUser, wrappedProducts, searchedProducts, query, setQuery, cart, addToCart, increaseQuantity, decreaseQuantity, clearCart }}>
             {children}
         </StoreContext.Provider>
     )

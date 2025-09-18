@@ -8,6 +8,7 @@ import nb from '../assets/NB_logo.jpeg'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import test from '../assets/sl-72-rs-shoes.avif'
+
 import { useStore } from "./Context/StoreContext";
 
 const Landing = () => {
