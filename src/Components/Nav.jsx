@@ -73,11 +73,11 @@ const Nav = () => {
         </div>
         <div className="nav-links">
           <div className="search-input">
-            <input 
-              type="text" 
-              placeholder='Search here...' 
-              value={input} 
-              onChange={(e) => setInput(e.target.value)} 
+            <input
+              type="text"
+              placeholder='Search here...'
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
             <img src={search} onClick={handleInput} alt="search" />
           </div>
@@ -99,9 +99,9 @@ const Nav = () => {
           )}
         </div>
       </div>
+      
 
-      {isOpen && 
-      <Cart close={closeCart} />}
+      {isOpen && <Cart close={closeCart} />}
     </>
   )
 }

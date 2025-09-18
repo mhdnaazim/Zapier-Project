@@ -1,20 +1,26 @@
-import React, { useEffect } from "react";
-import './Cart.css'
+import React, { useEffect, useState } from "react";
+import './Cart.css';
 import { useStore } from "./Context/StoreContext";
+import { toast } from "react-toastify";
 
-const Cart = () => {
-
-    const { cart, addToCart, increaseQuantity, decreaseQuantity, clearCart } = useStore()
+const Cart = ({ onClose }) => {
+    const { cart, increaseQuantity, decreaseQuantity } = useStore();
+    const [animate, setAnimate] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => setAnimate(true), 10)
-    }, [])
+        setTimeout(() => setAnimate(true), 10);
+    }, []);
 
     const handleClose = () => {
-        setAnimate(false)
-        setTimeout(() => close(), 350); // wait for animation before unmount
-    }
+        setAnimate(false);
+        setTimeout(() => {
+            if (onClose) onClose(); 
+        }, 350);
+    };
 
+    const subTotal = cart.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
 
     return (
         <>
@@ -71,7 +77,6 @@ const Cart = () => {
                         )}
                     </div>
 
-
                     <div className="cart-foot">
                         <div className="cart-foot-top">
                             <h5>Sub-Total</h5>
@@ -80,7 +85,7 @@ const Cart = () => {
                         <div className="cart-foot-mid">
                             {cart.length > 0 ? (
                                 <button onClick={() => {
-                                    setShowInvoice(true)
+                                    toast.success("Proceeding to checkout...");
                                 }}>
                                     Checkout Now
                                 </button>
@@ -97,10 +102,9 @@ const Cart = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
-    )
-}
+    );
+};
 
-export default Cart
+export default Cart;

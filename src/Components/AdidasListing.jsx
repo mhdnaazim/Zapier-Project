@@ -4,8 +4,15 @@ import { adidas } from "../Products";
 
 import wishlist from '../assets/wishlist.png'
 import fav from '../assets/favourites.png'
+import { useStore } from "./Context/StoreContext";
 
 const AdidasListing = () => {
+
+        const { cart, addToCart, increaseQuantity, decreaseQuantity } = useStore();
+        console.log(cart);
+        
+    
+
     return (
         <>
             <div className="adidas-home">
@@ -20,7 +27,7 @@ const AdidasListing = () => {
                                 <h4>₹{item.price}</h4>
                                 <p>{item.title}</p>
                                 <div className="card-bottom">
-                                    <button>Add to Cart</button>
+                                    <button onClick={() => { addToCart(item), toast.success("Item Added Successfully!"); }}>Add to Cart</button>
                                     <div className="card-bottom-icons">
                                     <img src={fav}/>
                                     <img src={wishlist}/>

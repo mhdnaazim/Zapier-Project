@@ -78,14 +78,20 @@
 
 .close-btn {
     background-color: #fff;
-    height: 28px;
-    width: 28px;
-    border-radius: 50%;
+    height: 40px;
+    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 1px 2px 5px #DBDBDB;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.close-btn:hover{
+    background-color: red;
+    color: #fff;
 }
 
 .cart-list {
