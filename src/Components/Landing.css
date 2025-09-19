@@ -111,4 +111,20 @@
   cursor: grabbing;
 }
 
+.atc-btn{
+    font-size: 15px;
+    font-weight: 600;
+    height: 35px;
+    width: 120px;
+    background-color: transparent;
+    border: 1px solid #c2bebe;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.atc-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
 

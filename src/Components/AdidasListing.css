@@ -77,12 +77,43 @@
     margin-bottom: 0;
 }
 
-.card-bottom{
+.quantity-btns{
+    background-color: white;
+    color: #000;
+    height: 30px;
+    width: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #c2bebe;
+    border-radius: 5px;
+}
+
+.quantity-btns h6{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.quantity-btns button{
+    height: 30px;
+    width: 32px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.quantity-btns button:hover{
+    background-color: #c2bebe;
+}
+
+.adidas-card-bottom{
     height: min-content;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 10px;
 }
 
 .card-bottom-icons{
@@ -91,7 +122,6 @@
     display: flex;
     align-items: center;
     justify-content: end;
-    padding-right: 10px;
     gap: 10px;
 }
 
@@ -100,12 +130,11 @@
     width: 30px;
 }
 
-.adidas-card button {
-    margin-left: 10px;
+.atc-btn{
     font-size: 15px;
     font-weight: 600;
-    height: 40px;
-    width: 130px;
+    height: 35px;
+    width: 120px;
     background-color: transparent;
     border: 1px solid #c2bebe;
     border-radius: 5px;
@@ -113,7 +142,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-.adidas-card button:hover {
+.atc-btn:hover {
     background-color: #000;
     color: #fff;
 }

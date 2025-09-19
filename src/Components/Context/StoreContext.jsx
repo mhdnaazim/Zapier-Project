@@ -12,38 +12,45 @@ export const StoreProvider = ({ children }) => {
 
     const CartProducts = JSON.parse(localStorage.getItem("cart")) || []
     const [cart, setCart] = useState(CartProducts)
-    console.log(cart);
 
-    const addToCart = (item, id) => {
-        const existingItem = cart.find(citem => citem.id === id);
+    // ✅ Fixed addToCart
+    const addToCart = (item) => {
+        const existingItem = cart.find(citem => citem.id === item.id);
         if (existingItem) {
             setCart(prevCart =>
                 prevCart.map(citem =>
-                    citem.id === id
+                    citem.id === item.id
                         ? { ...citem, quantity: citem.quantity + 1 }
                         : citem
                 )
             );
         } else {
-            setCart(prevCart => [...prevCart, { ...item, id, quantity: 1 }]);
+            setCart(prevCart => [...prevCart, { ...item, quantity: 1 }]);
         }
     };
 
-
+    // ✅ Fixed increaseQuantity
     const increaseQuantity = (id) => {
-        setCart(prevCart => prevCart.map(citem => {
-            citem.id === id
-                ? { ...citem, quantity: citem.quantity + 1 }
-                : citem
-        }))
+        setCart(prevCart =>
+            prevCart.map(citem =>
+                citem.id === id
+                    ? { ...citem, quantity: citem.quantity + 1 }
+                    : citem
+            )
+        )
     }
 
+    // ✅ Fixed decreaseQuantity
     const decreaseQuantity = (id) => {
-        setCart(prevCart => prevCart.map(citem => {
-            citem.id === id
-                ? { ...citem, quantity: citem.quantity - 1 }
-                : citem
-        }))
+        setCart(prevCart =>
+            prevCart
+                .map(citem =>
+                    citem.id === id
+                        ? { ...citem, quantity: citem.quantity - 1 }
+                        : citem
+                )
+                .filter(citem => citem.quantity > 0) // remove if quantity hits 0
+        )
     }
 
     const clearCart = () => {
@@ -63,7 +70,19 @@ export const StoreProvider = ({ children }) => {
     )
 
     return (
-        <StoreContext.Provider value={{ user, setUser, wrappedProducts, searchedProducts, query, setQuery, cart, addToCart, increaseQuantity, decreaseQuantity, clearCart }}>
+        <StoreContext.Provider value={{
+            user,
+            setUser,
+            wrappedProducts,
+            searchedProducts,
+            query,
+            setQuery,
+            cart,
+            addToCart,
+            increaseQuantity,
+            decreaseQuantity,
+            clearCart
+        }}>
             {children}
         </StoreContext.Provider>
     )

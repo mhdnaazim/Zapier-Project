@@ -7,12 +7,27 @@ import puma from '../assets/puma_logo.jpeg'
 import nb from '../assets/NB_logo.jpeg'
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import test from '../assets/sl-72-rs-shoes.avif'
+import nike5 from '../assets/nike (5).png'
+import nb5 from '../assets/nb5.avif'
+import nb16 from '../assets/nb16.avif'
+import puma14 from '../assets/sc (1).avif'
+import wishlist from '../assets/wishlist.png';
+import fav from '../assets/favourites.png';
+
 
 import { useStore } from "./Context/StoreContext";
 
 const Landing = () => {
 
+    const topSellers = [
+        { id: "21", title: "Nike Vomero 18", img: nike5, price: "12 295.00", brand: "Nike" },
+        { id: "53", title: "1000", img: nb5, price: "18 999.00", brand: "New Balance" },
+        { id: "46", title: "Scuderia Ferrari HP Speedcat", img: puma14, price: "10 999.00", brand: "Puma" },
+        { id: "64", title: "1000", img: nb16, price: "18 999.00", brand: "New Balance" }
+
+    ]
+
+    const { cart, increaseQuantity, decreaseQuantity, addToCart } = useStore()
     const navigate = useNavigate()
 
     const LoggedUser = localStorage.getItem("LoggedUser");
@@ -49,32 +64,40 @@ const Landing = () => {
                             <p>TOP SELLERS</p>
                         </div>
                         <div className="sellers">
-                            <div className="adidas-card">
-                                <img src={test} />
-                                <h4>₹11 999.00</h4>
-                                <p>Superstar - Puma</p>
-                                <button>Add to Cart</button>
-                            </div>
-                            <div className="adidas-card">
-                                <img src={test} />
-                                <h4>₹11 999.00</h4>
-                                <p>Superstar - Nike</p>
-                                <button>Add to Cart</button>
-                            </div>
+                            {topSellers.map((item) => {
+                            const inCart = cart.find(cartItem => cartItem.id === item.id);
+                                return (
+                                    <div className="adidas-card">
+                                        <img src={item.img} />
+                                        <h4>{item.price}</h4>
+                                        <p>{item.title} | {item.brand}</p>
+                                        <div className="adidas-card-bottom">
+                                            {inCart ? (
+                                                <div className="quantity-btns">
+                                                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                                    <h6>{inCart.quantity}</h6>
+                                                    <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    className="atc-btn"
+                                                    onClick={() => {
+                                                        addToCart(item);
+                                                        toast.success("Item Added Successfully!");
+                                                    }}
+                                                >
+                                                    Add to Cart
+                                                </button>
+                                            )}
 
-                            <div className="adidas-card">
-                                <img src={test} />
-                                <h4>₹11 999.00</h4>
-                                <p>Superstar - Adidas</p>
-                                <button>Add to Cart</button>
-                            </div>
-
-                            <div className="adidas-card">
-                                <img src={test} />
-                                <h4>₹11 999.00</h4>
-                                <p>Superstar - New Balance</p>
-                                <button>Add to Cart</button>
-                            </div>
+                                            <div className="card-bottom-icons">
+                                                <img src={fav} alt="favourites" />
+                                                <img src={wishlist} alt="wishlist" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
