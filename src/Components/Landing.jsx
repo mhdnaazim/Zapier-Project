@@ -11,7 +11,7 @@ import nike5 from '../assets/nike (5).png'
 import nb5 from '../assets/nb5.avif'
 import nb16 from '../assets/nb16.avif'
 import puma14 from '../assets/sc (1).avif'
-import wishlist from '../assets/wishlist.png';
+// import wishlist from '../assets/wishlist.png';
 import fav from '../assets/favourites.png';
 
 
@@ -92,7 +92,7 @@ const Landing = () => {
 
                                             <div className="card-bottom-icons">
                                                 <img src={fav} alt="favourites" />
-                                                <img src={wishlist} alt="wishlist" />
+                                                {/* <img src={wishlist} alt="wishlist" /> */}
                                             </div>
                                         </div>
                                     </div>

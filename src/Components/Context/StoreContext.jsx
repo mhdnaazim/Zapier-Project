@@ -13,7 +13,6 @@ export const StoreProvider = ({ children }) => {
     const CartProducts = JSON.parse(localStorage.getItem("cart")) || []
     const [cart, setCart] = useState(CartProducts)
 
-    // ✅ Fixed addToCart
     const addToCart = (item) => {
         const existingItem = cart.find(citem => citem.id === item.id);
         if (existingItem) {
@@ -29,7 +28,6 @@ export const StoreProvider = ({ children }) => {
         }
     };
 
-    // ✅ Fixed increaseQuantity
     const increaseQuantity = (id) => {
         setCart(prevCart =>
             prevCart.map(citem =>
@@ -40,7 +38,6 @@ export const StoreProvider = ({ children }) => {
         )
     }
 
-    // ✅ Fixed decreaseQuantity
     const decreaseQuantity = (id) => {
         setCart(prevCart =>
             prevCart
@@ -49,7 +46,7 @@ export const StoreProvider = ({ children }) => {
                         ? { ...citem, quantity: citem.quantity - 1 }
                         : citem
                 )
-                .filter(citem => citem.quantity > 0) // remove if quantity hits 0
+                .filter(citem => citem.quantity > 0)
         )
     }
 

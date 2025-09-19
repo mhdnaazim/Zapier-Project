@@ -12,6 +12,7 @@ import Puma from "./Components/Puma";
 import NewBalance from "./Components/NewBalance";
 import FilteredProducts from "./Components/FilteredProducts";
 import Cart from "./Components/Cart";
+import Favourites from "./Components/Favourites";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/nb" element={<NewBalance />} />
             <Route path="products" element={<FilteredProducts/>} />
             <Route path="/cart" element={<Cart/>} />
+            <Route path="/favourites" element={<Favourites/>} />
 
           </Routes>
           <ToastContainer

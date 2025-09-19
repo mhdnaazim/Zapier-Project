@@ -3,7 +3,7 @@ import './Nav.css'
 import nlogo from '../assets/zap-new.png'
 import cartIcon from '../assets/cart.png'
 import fav from '../assets/favourites.png'
-import wishlist from '../assets/wishlist.png'
+// import wishlist from '../assets/wishlist.png'
 import search from '../assets/search icon.png'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -90,7 +90,7 @@ const Nav = () => {
         </div>
         <div className="nav-cart">
           <img src={fav} alt="fav" />
-          <img src={wishlist} alt="wishlist" />
+          {/* <img src={wishlist} alt="wishlist" /> */}
           <img onClick={() => setIsopen(true)} src={cartIcon} alt="cart" />
           {cart.length > 0 && (
             <div className="cart-total">

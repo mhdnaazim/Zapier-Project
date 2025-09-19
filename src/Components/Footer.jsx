@@ -18,9 +18,6 @@ const Footer = () => {
             <div className="footer-container">
                 <div className="footer-top">
                     <div className="footer-top-links">
-                        <div className="footer-top-links-top">
-                            <p>Brands</p>
-                        </div>
                         <div className="footer-top-logos">
                             <img className="foot-brand-logo" src={adidasfoot} />
                             <img className="foot-brand-logo" src={nikefoot} />

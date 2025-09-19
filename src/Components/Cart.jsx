@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import fav from '../assets/favourites.png'
 
 const Cart = ({ close }) => {
-    const { cart, incQuantity, decreaseQuantity, increseQuantity, clearCart } = useStore();
+    const { cart, decreaseQuantity, increaseQuantity, clearCart } = useStore();
     const [animate, setAnimate] = useState(false);
 
     // Trigger slide-in after mount
@@ -63,12 +63,12 @@ const Cart = ({ close }) => {
                                                 <h5>Delivery: Free</h5>
                                             </div>
                                             <div className="cart-product-right-bottom">
-                                                <img src={fav}/>
+                                                <img src={fav} />
                                                 <div className="cart-counter">
-                                                <button onClick={() => decreaseQuantity(item.id)}>-</button>
-                                                <p>{item.quantity}</p>
-                                                <button onClick={() => increseQuantity(item.id)}>+</button>
-                                            </div>
+                                                    <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                                    <p>{item.quantity}</p>
+                                                    <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -80,14 +80,14 @@ const Cart = ({ close }) => {
                 <div className="cart-foot">
                     <div className="cart-foot-top">
                         <h5>Sub-Total</h5>
-                        <p>${subTotal}</p>
+                        <p>₹{subTotal}</p>
                     </div>
                     <div className="cart-foot-mid">
                         {cart.length > 0 ? (
                             <button
                                 onClick={clearCart}
                             >
-                                Checkout Now
+                                <span>Checkout Now</span>
                             </button>
                         ) : (
                             <button
@@ -95,7 +95,8 @@ const Cart = ({ close }) => {
                                     toast.error("No items in Cart");
                                 }}
                             >
-                                Checkout Now
+                                <span>Checkout Now</span>
+
                             </button>
                         )}
                     </div>

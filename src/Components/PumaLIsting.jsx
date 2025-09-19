@@ -2,9 +2,10 @@ import React from "react";
 import './AdidasListing.css'
 import { puma } from "../Products";
 
-import wishlist from '../assets/wishlist.png'
+// import wishlist from '../assets/wishlist.png'
 import fav from '../assets/favourites.png'
 import { useStore } from "./Context/StoreContext";
+import { toast } from "react-toastify";
 
 const PumaListing = () => {
         const { cart, addToCart, increaseQuantity, decreaseQuantity } = useStore();
@@ -46,7 +47,7 @@ const PumaListing = () => {
         
                                                 <div className="card-bottom-icons">
                                                     <img src={fav} alt="favourites" />
-                                                    <img src={wishlist} alt="wishlist" />
+                                                    {/* <img src={wishlist} alt="wishlist" /> */}
                                                 </div>
                                             </div>
                                         </div>
