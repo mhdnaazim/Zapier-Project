@@ -13,6 +13,7 @@ import nbfoot from '../assets/Reebok.jpeg'
 import pumafoot from '../assets/puma_logo.jpeg'
 
 const Footer = () => {
+
     return (
         <>
             <div className="footer-container">
@@ -23,7 +24,7 @@ const Footer = () => {
                             <img className="foot-brand-logo" src={nikefoot} />
                             <img className="foot-brand-logo" src={nbfoot} />
                             <img className="foot-brand-logo" src={pumafoot} />
-                            <img className="nb-foot" src={nblogo}/>
+                            <img className="nb-foot" src={nblogo} />
                         </div>
                     </div>
                     <div className="footer-top-links">

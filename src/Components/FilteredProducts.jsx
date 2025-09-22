@@ -47,7 +47,7 @@ const FilteredProducts = () => {
                         })}
                     </div>
                 ) : (
-                    <p>No products found.</p>
+                    <h5>No products found.</h5>
                 )}
             </div>
         </>

@@ -77,7 +77,7 @@
 .close-btn {
     background-color: #fff;
     height: 40px;
-    width: 50px;
+    width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,9 +88,9 @@
 }
 
 .close-btn:hover {
-    background-color: rgb(211, 21, 21);
+    background-color: #c2bebe;
     color: #fff;
-    border-radius: 50%;
+    border-radius: 5px;
 }
 
 .cart-list {

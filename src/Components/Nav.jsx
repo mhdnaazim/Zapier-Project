@@ -93,7 +93,7 @@ const Nav = () => {
             <li onClick={handleLogin}>LOGIN</li>
             <li onClick={handleRegister}>REGISTER</li>
             <li onClick={handleProfile}>PROFILE</li>
-            <li>ABOUT US</li>
+            <li onClick={() => navigate("/about")}>ABOUT US</li>
           </ul>
         </div>
         <div className="nav-cart">
