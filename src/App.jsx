@@ -13,6 +13,7 @@ import NewBalance from "./Components/NewBalance";
 import FilteredProducts from "./Components/FilteredProducts";
 import Cart from "./Components/Cart";
 import Favourites from "./Components/Favourites";
+import About from "./Components/About";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
             <Route path="products" element={<FilteredProducts/>} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/favourites" element={<Favourites/>} />
+            <Route path="/about" element={<About/>} />
 
           </Routes>
           <ToastContainer

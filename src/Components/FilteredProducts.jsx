@@ -2,26 +2,49 @@ import React from "react";
 import './FilteredProducts.css'
 import Nav from "./Nav";
 import { useStore } from "./Context/StoreContext";
+import { toast } from "react-toastify";
+import favIcon from "../assets/favourites.png";
+import favBlack from "../assets/fav_black.png";
 
 const FilteredProducts = () => {
 
-    const { query, searchedProducts } = useStore()
+    const { query, searchedProducts, cart, increaseQuantity, decreaseQuantity, fav, toggleFav, handleAddingProduct } = useStore()
 
     return (
         <>
             <Nav />
             <div className="filtered-listing">
+                <h1>SEARCH RESULTS</h1>
                 {query && searchedProducts.length > 0 ? (
                     <div className="filtered">
                         {searchedProducts.map((item) => {
-                            return(
-                            <div className="filtered-card" key={item.id}>
-                                <img src={item.img} />
-                                <h4>₹{item.price}</h4>
-                                <p>{item.title} | {item.brand}</p>
-                                <button>Add to Cart</button>
-                            </div>
-                        )})}
+                            const inCart = cart.find(cartItem => cartItem.id === item.id);
+                            return (
+                                <div key={item.id} className="adidas-card">
+                                    <img className="card-image" src={item.img} alt={item.title} />
+                                    <h4>₹{item.price}</h4>
+                                    <p>{item.title}</p>
+                                    <div className="adidas-card-bottom">
+                                        {inCart ? (
+                                            <div className="quantity-btns">
+                                                <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                                <h6>{inCart.quantity}</h6>
+                                                <button onClick={() => increaseQuantity(item.id)}>+</button>
+                                            </div>
+                                        ) : (
+                                            <button onClick={handleAddingProduct} className="atc-btn">Add to Cart</button>
+                                        )}
+
+                                        <div className="card-bottom-icons">
+                                            <img
+                                                src={fav.some(fitem => fitem.id === item.id) ? favBlack : favIcon}
+                                                onClick={() => toggleFav(item)}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>
                 ) : (
                     <p>No products found.</p>

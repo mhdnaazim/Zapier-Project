@@ -1,17 +1,29 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { adidas, newbalance, nike, puma } from "../../Products";
+import { toast } from "react-toastify";
 
 // Create Context 
-const StoreContext = createContext()
+const StoreContext = createContext();
 
-// Provider 
 export const StoreProvider = ({ children }) => {
-    const data = JSON.parse(localStorage.getItem("user")) || [];
-    const [user, setUser] = useState(data)
-    const [query, setQuery] = useState("")
+    const data = JSON.parse(localStorage.getItem("user")) || null;
+    const [user, setUser] = useState(data);
+    const [query, setQuery] = useState("");
 
-    const CartProducts = JSON.parse(localStorage.getItem("cart")) || []
-    const [cart, setCart] = useState(CartProducts)
+    const favourites = JSON.parse(localStorage.getItem("fav")) || [];
+    const [fav, setFav] = useState(favourites);
+
+    const toggleFav = (favItem) => {
+        const exists = fav.find((fitem) => fitem.id === favItem.id);
+        if (exists) {
+            setFav(prevFav => prevFav.filter(fitem => fitem.id !== favItem.id));
+        } else {
+            setFav(prevFav => [...prevFav, favItem]);
+        }
+    };
+
+    const CartProducts = JSON.parse(localStorage.getItem("cart")) || [];
+    const [cart, setCart] = useState(CartProducts);
 
     const addToCart = (item) => {
         const existingItem = cart.find(citem => citem.id === item.id);
@@ -35,8 +47,8 @@ export const StoreProvider = ({ children }) => {
                     ? { ...citem, quantity: citem.quantity + 1 }
                     : citem
             )
-        )
-    }
+        );
+    };
 
     const decreaseQuantity = (id) => {
         setCart(prevCart =>
@@ -47,24 +59,33 @@ export const StoreProvider = ({ children }) => {
                         : citem
                 )
                 .filter(citem => citem.quantity > 0)
-        )
-    }
+        );
+    };
 
-    const clearCart = () => {
-        setCart([])
-    }
+    const clearCart = () => setCart([]);
+
+    const handleAddingProduct = (item, LoggedUser) => {
+        if (!LoggedUser) {
+            toast.error("Login First");
+            
+        } else {
+            addToCart(item);
+            toast.success("Item Added Successfully");
+        }
+    };
 
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(user))
-        localStorage.setItem("cart", JSON.stringify(cart))
-    }, [user, cart])
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("fav", JSON.stringify(fav));
+    }, [user, cart, fav]);
 
-    const wrappedProducts = [...adidas, ...nike, ...newbalance, ...puma]
+    const wrappedProducts = [...adidas, ...nike, ...newbalance, ...puma];
 
     const searchedProducts = wrappedProducts.filter((p) =>
-        (p.title).toLowerCase().includes(query.toLowerCase()) ||
-        (p.brand).toLowerCase().includes(query.toLowerCase())
-    )
+        p.title.toLowerCase().includes(query.toLowerCase()) ||
+        p.brand.toLowerCase().includes(query.toLowerCase())
+    );
 
     return (
         <StoreContext.Provider value={{
@@ -78,12 +99,14 @@ export const StoreProvider = ({ children }) => {
             addToCart,
             increaseQuantity,
             decreaseQuantity,
-            clearCart
+            clearCart,
+            fav,
+            toggleFav,
+            handleAddingProduct
         }}>
             {children}
         </StoreContext.Provider>
-    )
-}
+    );
+};
 
-// Custom Hook 
-export const useStore = () => useContext(StoreContext)
+export const useStore = () => useContext(StoreContext);

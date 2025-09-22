@@ -11,9 +11,8 @@ import nike5 from '../assets/nike (5).png'
 import nb5 from '../assets/nb5.avif'
 import nb16 from '../assets/nb16.avif'
 import puma14 from '../assets/sc (1).avif'
-// import wishlist from '../assets/wishlist.png';
-import fav from '../assets/favourites.png';
-
+import favIcon from "../assets/favourites.png";
+import favBlack from "../assets/fav_black.png";
 
 import { useStore } from "./Context/StoreContext";
 
@@ -24,10 +23,9 @@ const Landing = () => {
         { id: "53", title: "1000", img: nb5, price: "18 999.00", brand: "New Balance" },
         { id: "46", title: "Scuderia Ferrari HP Speedcat", img: puma14, price: "10 999.00", brand: "Puma" },
         { id: "64", title: "1000", img: nb16, price: "18 999.00", brand: "New Balance" }
-
     ]
 
-    const { cart, increaseQuantity, decreaseQuantity, addToCart } = useStore()
+    const { cart, increaseQuantity, decreaseQuantity, addToCart, fav, toggleFav, handleAddingProduct } = useStore()
     const navigate = useNavigate()
 
     const LoggedUser = localStorage.getItem("LoggedUser");
@@ -65,10 +63,10 @@ const Landing = () => {
                         </div>
                         <div className="sellers">
                             {topSellers.map((item) => {
-                            const inCart = cart.find(cartItem => cartItem.id === item.id);
+                                const inCart = cart.find(cartItem => cartItem.id === item.id);
                                 return (
                                     <div className="adidas-card">
-                                        <img src={item.img} />
+                                        <img className="card-image" src={item.img} />
                                         <h4>{item.price}</h4>
                                         <p>{item.title} | {item.brand}</p>
                                         <div className="adidas-card-bottom">
@@ -79,20 +77,14 @@ const Landing = () => {
                                                     <button onClick={() => increaseQuantity(item.id)}>+</button>
                                                 </div>
                                             ) : (
-                                                <button
-                                                    className="atc-btn"
-                                                    onClick={() => {
-                                                        addToCart(item);
-                                                        toast.success("Item Added Successfully!");
-                                                    }}
-                                                >
-                                                    Add to Cart
-                                                </button>
+                                                <button onClick={handleAddingProduct} className="atc-btn">Add to Cart</button>
                                             )}
 
                                             <div className="card-bottom-icons">
-                                                <img src={fav} alt="favourites" />
-                                                {/* <img src={wishlist} alt="wishlist" /> */}
+                                                <img
+                                                    src={fav.some(fitem => fitem.id === item.id) ? favBlack : favIcon}
+                                                    onClick={() => toggleFav(item)}
+                                                />
                                             </div>
                                         </div>
                                     </div>

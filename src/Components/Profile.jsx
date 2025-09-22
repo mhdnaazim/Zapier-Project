@@ -56,92 +56,92 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
-  <div className="profile-page">
-    <div className="profile-heads">
-      <h1>Hey, {profile?.username}</h1>
+      <div className="profile-page">
+        <div className="profile-heads">
+          <h1>Hey, {profile?.username}</h1>
+        </div>
+
+        {edit ? (
+          <div className="edit-profile">
+            <label>
+              <strong>Username:</strong>
+              <input
+                type="text"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              <strong>Number:</strong>
+              <input
+                type="text"
+                name="number"
+                value={formData.number}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              <strong>Email:</strong>
+              <input
+                type="text"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              <strong>Password:</strong>
+              <input
+                type="text"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </label>
+
+            <div className="btns">
+              <button className="save-change-btn" onClick={handleSave}>
+                Save Changes
+              </button>
+              <button className="cancel-btn" onClick={() => setEdit(false)}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="profile-details">
+            <p>
+              <strong>Username:</strong> {profile?.username}
+            </p>
+            <p>
+              <strong>Number:</strong> {profile?.number}
+            </p>
+            <p>
+              <strong>Email:</strong> {profile?.email}
+            </p>
+            <p>
+              <strong>Password:</strong> {profile?.password}
+            </p>
+
+            <div className="btns">
+              <button className="edit-btn" onClick={() => setEdit(true)}>
+                Edit Profile
+              </button>
+              <button className="dlt-btn" onClick={handleDelete}>
+                Delete Account
+              </button>
+            </div>
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
+        )}
+      </div>
     </div>
-
-    {edit ? (
-      <div className="edit-profile">
-        <label>
-          <strong>Username:</strong>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          <strong>Number:</strong>
-          <input
-            type="text"
-            name="number"
-            value={formData.number}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          <strong>Email:</strong>
-          <input
-            type="text"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </label>
-
-        <label>
-          <strong>Password:</strong>
-          <input
-            type="text"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </label>
-
-        <div className="btns">
-          <button className="save-change-btn" onClick={handleSave}>
-            Save Changes
-          </button>
-          <button className="cancel-btn" onClick={() => setEdit(false)}>
-            Cancel
-          </button>
-        </div>
-      </div>
-    ) : (
-      <div className="profile-details">
-        <p>
-          <strong>Username:</strong> {profile?.username}
-        </p>
-        <p>
-          <strong>Number:</strong> {profile?.number}
-        </p>
-        <p>
-          <strong>Email:</strong> {profile?.email}
-        </p>
-        <p>
-          <strong>Password:</strong> {profile?.password}
-        </p>
-
-        <div className="btns">
-          <button className="edit-btn" onClick={() => setEdit(true)}>
-            Edit Profile
-          </button>
-          <button className="dlt-btn" onClick={handleDelete}>
-            Delete Account
-          </button>
-        </div>
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
-        </button>
-      </div>
-    )}
-  </div>
-</div>
 
   );
 };

@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import './Nav.css'
 import nlogo from '../assets/zap-new.png'
 import cartIcon from '../assets/cart.png'
-import fav from '../assets/favourites.png'
+import favlogo from '../assets/favourites.png'
 // import wishlist from '../assets/wishlist.png'
 import search from '../assets/search icon.png'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useStore } from './Context/StoreContext'
 import Cart from './Cart'
+import Favourites from './Favourites'
 
 const Nav = () => {
-  const { cart, setQuery } = useStore()
+  const { cart, setQuery, fav } = useStore()
   const [input, setInput] = useState("")
   const [isOpen, setIsopen] = useState(false)
   const navigate = useNavigate()
@@ -65,6 +66,13 @@ const Nav = () => {
     navigate("/products")
   }
 
+  const handleFav = () => {
+    if(fav.length > 0){
+      navigate("/Favourites")
+    }else(
+      toast.error("No Items in Favourites")
+    )
+  }
   return (
     <>
       <div className="nav-container">
@@ -89,9 +97,8 @@ const Nav = () => {
           </ul>
         </div>
         <div className="nav-cart">
-          <img src={fav} alt="fav" />
-          {/* <img src={wishlist} alt="wishlist" /> */}
-          <img onClick={() => setIsopen(true)} src={cartIcon} alt="cart" />
+          <img src={favlogo} onClick={handleFav}/>
+          <img onClick={() => setIsopen(true)} src={cartIcon}/>
           {cart.length > 0 && (
             <div className="cart-total">
               <p>{cartSize}</p>

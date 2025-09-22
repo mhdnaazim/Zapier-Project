@@ -14,11 +14,9 @@
     align-items: center;
     justify-content: end;
     position: fixed;
-    /* was absolute → fixed */
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.4);
-    /* dim background */
     z-index: 9999;
     transition: background 0.3s ease-in-out;
 }
@@ -92,6 +90,7 @@
 .close-btn:hover {
     background-color: rgb(211, 21, 21);
     color: #fff;
+    border-radius: 50%;
 }
 
 .cart-list {
@@ -294,7 +293,7 @@
 }
 
 .cart-empty {
-    color: #4a4c4d;
+    color: #c2bebe;
     height: 100%;
     width: 100%;
     font-size: 18px;

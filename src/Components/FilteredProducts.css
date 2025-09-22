@@ -12,9 +12,16 @@
     width: 100%;
     padding: 150px 0;
     display: flex;
-    align-items: start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     z-index: 99;
+    gap: 30px;
+}
+
+.filtered-listing h1{
+    font-size: 35px;
+    font-weight: 600;
 }
 
 .filtered{
@@ -24,6 +31,7 @@
     width: 85%;
     gap: 50px;
 }
+
 
 .filtered-card {
     background-color: #fff;
@@ -80,4 +88,10 @@
 .filtered-card button:hover {
     background-color: #000;
     color: #fff;
+}
+
+.filtered-listing p{
+    color: #c2bebe;
+    font-size: 18px;
+    font-weight: 500;
 }

@@ -42,7 +42,7 @@ const Cart = ({ close }) => {
                     </div>
                 </div>
 
-                {/* Cart Items */}
+
                 <div className="cart-list">
                     {cart.length === 0 || cart.every((item) => item.quantity === 0) ? (
                         <div className="cart-empty">
@@ -63,7 +63,7 @@ const Cart = ({ close }) => {
                                                 <h5>Delivery: Free</h5>
                                             </div>
                                             <div className="cart-product-right-bottom">
-                                                <img src={fav} />
+                                                {/* <img src={fav} /> */}
                                                 <div className="cart-counter">
                                                     <button onClick={() => decreaseQuantity(item.id)}>-</button>
                                                     <p>{item.quantity}</p>

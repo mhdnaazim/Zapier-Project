@@ -1,14 +1,13 @@
 import React from "react";
 import './AdidasListing.css';
 import { adidas } from "../Products";
-
-// import wishlist from '../assets/wishlist.png';
-import fav from '../assets/favourites.png';
 import { useStore } from "./Context/StoreContext";
 import { toast } from "react-toastify";
+import favIcon from "../assets/favourites.png";
+import favBlack from "../assets/fav_black.png";
 
 const AdidasListing = () => {
-    const { cart, addToCart, increaseQuantity, decreaseQuantity } = useStore();
+    const { cart, addToCart, increaseQuantity, decreaseQuantity, fav, toggleFav} = useStore();
 
     return (
         <>
@@ -46,8 +45,10 @@ const AdidasListing = () => {
                                         )}
 
                                         <div className="card-bottom-icons">
-                                            <img src={fav} alt="favourites" />
-                                            {/* <img src={wishlist} alt="wishlist" /> */}
+                                            <img
+                                                src={fav.some(fitem => fitem.id === item.id) ? favBlack : favIcon}
+                                                onClick={() => toggleFav(item)}
+                                            />
                                         </div>
                                     </div>
                                 </div>
