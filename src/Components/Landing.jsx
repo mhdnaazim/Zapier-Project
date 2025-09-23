@@ -19,39 +19,28 @@ import { useStore } from "./Context/StoreContext";
 const Landing = () => {
 
     const topSellers = [
-        { id: "21", title: "Nike Vomero 18", img: nike5, price: "12 295.00", brand: "Nike" },
-        { id: "53", title: "1000", img: nb5, price: "18 999.00", brand: "New Balance" },
-        { id: "46", title: "Scuderia Ferrari HP Speedcat", img: puma14, price: "10 999.00", brand: "Puma" },
-        { id: "64", title: "1000", img: nb16, price: "18 999.00", brand: "New Balance" }
+        { id: "21", title: "Nike Vomero 18", img: nike5, price: 12295, brand: "Nike" },
+        { id: "53", title: "1000", img: nb5, price: 18999, brand: "New Balance" },
+        { id: "46", title: "Scuderia Ferrari HP Speedcat", img: puma14, price: 10999, brand: "Puma" },
+        { id: "64", title: "1000", img: nb16, price: 18999, brand: "New Balance" }
     ]
-
-    const { cart, increaseQuantity, decreaseQuantity, addToCart, fav, toggleFav, handleAddingProduct } = useStore()
+    const { cart, increaseQuantity, decreaseQuantity, fav, toggleFav, addToCart } = useStore()
     const navigate = useNavigate()
-
-    const LoggedUser = localStorage.getItem("LoggedUser");
-
-
-    const handleSection = (brand) => {
-        if (!LoggedUser) {
-            toast.error("Login First")
-            return;
-        } else { navigate(`/${brand}`) }
-    }
 
     return (
         <>
             <div className="landing-container">
                 <div className="landing-sections-container">
-                    <div className="sections" onClick={() => handleSection("adidas")}>
+                    <div className="sections" onClick={() => navigate("/adidas")} >
                         <img src={adidas} />
                     </div>
-                    <div className="sections" onClick={() => handleSection("nike")}>
+                    <div className="sections" onClick={() => navigate("/nike")}>
                         <img src={nike} />
                     </div>
-                    <div className="sections" onClick={() => handleSection("puma")}>
+                    <div className="sections" onClick={() => navigate("/puma")}>
                         <img src={puma} />
                     </div>
-                    <div className="sections" onClick={() => handleSection("nb")}>
+                    <div className="sections" onClick={() => navigate("/nb")}>
                         <img src={nb} />
                     </div>
                 </div>
@@ -67,7 +56,7 @@ const Landing = () => {
                                 return (
                                     <div className="adidas-card">
                                         <img className="card-image" src={item.img} />
-                                        <h4>{item.price}</h4>
+                                        <h4>₹{item.price}</h4>
                                         <p>{item.title} | {item.brand}</p>
                                         <div className="adidas-card-bottom">
                                             {inCart ? (
@@ -77,7 +66,10 @@ const Landing = () => {
                                                     <button onClick={() => increaseQuantity(item.id)}>+</button>
                                                 </div>
                                             ) : (
-                                                <button onClick={handleAddingProduct} className="atc-btn">Add to Cart</button>
+                                                <button className="atc-btn" onClick={() => {
+                                                    addToCart(item);
+                                                    toast.success("Item Added Successfully!");
+                                                }}> Add to Cart </button>
                                             )}
 
                                             <div className="card-bottom-icons">

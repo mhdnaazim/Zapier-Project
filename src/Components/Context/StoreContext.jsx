@@ -64,16 +64,6 @@ export const StoreProvider = ({ children }) => {
 
     const clearCart = () => setCart([]);
 
-    const handleAddingProduct = (item, LoggedUser) => {
-        if (!LoggedUser) {
-            toast.error("Login First");
-            
-        } else {
-            addToCart(item);
-            toast.success("Item Added Successfully");
-        }
-    };
-
     useEffect(() => {
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -90,19 +80,18 @@ export const StoreProvider = ({ children }) => {
     return (
         <StoreContext.Provider value={{
             user,
-            setUser,
             wrappedProducts,
             searchedProducts,
             query,
-            setQuery,
             cart,
+            fav,
+            setUser,
+            setQuery,
             addToCart,
             increaseQuantity,
             decreaseQuantity,
             clearCart,
-            fav,
             toggleFav,
-            handleAddingProduct
         }}>
             {children}
         </StoreContext.Provider>

@@ -26,7 +26,8 @@ const Banner = () => {
                 onSelect={handleSelect}
                 controls={false}
                 indicators={false}
-                interval={null}  // disable auto timer
+                interval={null}
+                wrap={true}
             >
                 {/* Video 1 */}
                 <Carousel.Item>

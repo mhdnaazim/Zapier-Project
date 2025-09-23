@@ -16,20 +16,23 @@ const Login = () => {
     }
 
     const handleLogin = () => {
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-        const validUser = users.find(
-            (u) => u.email === formData.email && u.password === formData.password
-        )
+    const inputEmail = formData.email.toLowerCase();
 
-        if (validUser) {
-            localStorage.setItem("LoggedUser", JSON.stringify(validUser))
-            toast.success("Login Successful");
-            navigate("/home");
-        } else {
-            toast.error("Invalid Email or Password");
-        }
+    const validUser = users.find(
+        (u) => u.email.toLowerCase() === inputEmail && u.password === formData.password
+    );
+
+    if (validUser) {
+        localStorage.setItem("LoggedUser", JSON.stringify(validUser));
+        toast.success("Login Successful");
+        navigate("/home");
+    } else {
+        toast.error("Invalid Email or Password");
     }
+};
+
 
 
 

@@ -40,13 +40,13 @@ const Nav = () => {
     }
   }
 
-  const handleRegister = () => {
-    if (LoggedUser) {
-      toast.error("Already Logged")
-    } else {
-      navigate("/")
-    }
-  }
+  // const handleRegister = () => {
+  //   if (LoggedUser) {
+  //     toast.error("Already Logged")
+  //   } else {
+  //     navigate("/")
+  //   }
+  // }
 
   const handleProfile = () => {
     if (!LoggedUser) {
@@ -67,12 +67,30 @@ const Nav = () => {
   }
 
   const handleFav = () => {
-    if(fav.length > 0){
+    if (fav.length > 0) {
       navigate("/Favourites")
-    }else(
+    } else (
       toast.error("No Items in Favourites")
     )
   }
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      localStorage.removeItem("LoggedUser");
+      navigate("/home");
+    }
+  };
+
+  const handleCart = () => {
+    if(!LoggedUser){
+      toast.error("Login to view cart")
+      return;
+    }else{
+      setIsopen(true)
+    }
+  }
+
+
   return (
     <>
       <div className="nav-container">
@@ -89,16 +107,25 @@ const Nav = () => {
             />
             <img src={search} onClick={handleInput} alt="search" />
           </div>
-          <ul>
-            <li onClick={handleLogin}>LOGIN</li>
-            <li onClick={handleRegister}>REGISTER</li>
+          {!LoggedUser ? (
+            <ul>
+            <li onClick={() => navigate("/home")}>HOME</li>
             <li onClick={handleProfile}>PROFILE</li>
+            <li onClick={handleLogin}>LOGIN</li>
             <li onClick={() => navigate("/about")}>ABOUT US</li>
           </ul>
+          ) : (
+            <ul>
+            <li onClick={() => navigate("/home")}>HOME</li>
+            <li onClick={handleProfile}>PROFILE</li>
+            <li onClick={handleLogout}>LOGOUT</li>
+            <li onClick={() => navigate("/about")}>ABOUT US</li>
+          </ul>
+          )}
         </div>
         <div className="nav-cart">
-          <img src={favlogo} onClick={handleFav}/>
-          <img onClick={() => setIsopen(true)} src={cartIcon}/>
+          <img src={favlogo} onClick={handleFav} />
+          <img onClick={handleCart} src={cartIcon} />
           {cart.length > 0 && (
             <div className="cart-total">
               <p>{cartSize}</p>
@@ -106,7 +133,7 @@ const Nav = () => {
           )}
         </div>
       </div>
-      
+
 
       {isOpen && <Cart close={closeCart} />}
     </>

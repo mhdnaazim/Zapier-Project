@@ -14,6 +14,7 @@ import FilteredProducts from "./Components/FilteredProducts";
 import Cart from "./Components/Cart";
 import Favourites from "./Components/Favourites";
 import About from "./Components/About";
+import Profile from "./Components/Profile";
 
 const App = () => {
   return (
@@ -25,7 +26,7 @@ const App = () => {
             <Route path="/" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/profile" element={<ProfileSection />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/adidas" element={<Adidas />} />
             <Route path="/nike" element={<Nike />} />
             <Route path="/puma" element={<Puma />} />

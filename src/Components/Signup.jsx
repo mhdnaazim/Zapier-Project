@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Signup = () => {
     const navigate = useNavigate();
-    
+
     const [formData, setFormData] = useState({
         username: "",
         number: "",
@@ -17,7 +17,8 @@ const Signup = () => {
     })
 
     const handleSignup = () => {
-        const { username, number, email, password, confirmPassword } = formData;
+        const { username, number, email , password, confirmPassword } = formData;
+        const lowerEmail = email.toLocaleLowerCase()
 
 
         if (!username || !number || !email || !password || !confirmPassword) {
@@ -26,7 +27,7 @@ const Signup = () => {
         }
 
         //Email Format 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
         if (!emailRegex.test(email)) {
             toast.error("Please enter a valid email address");
             return;
@@ -44,12 +45,23 @@ const Signup = () => {
 
         const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-        const newUser = { username, email, number, password }
+
+        const userExists = existingUsers.some(
+            (users) => users.email === lowerEmail || users.number === number
+        )
+
+        if (userExists) {
+            toast.error("User already exists")
+            return;
+        }
+
+
+        const newUser = { username, email: lowerEmail, number, password }
         existingUsers.push(newUser);
 
         localStorage.setItem("users", JSON.stringify(existingUsers))
 
-        toast.success("Signup Successful");
+        toast.success("Signup Successfull");
         navigate("/login");
     };
 

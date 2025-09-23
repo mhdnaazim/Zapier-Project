@@ -7,8 +7,7 @@ import favIcon from "../assets/favourites.png";
 import favBlack from "../assets/fav_black.png";
 
 const AdidasListing = () => {
-    const { cart, addToCart, increaseQuantity, decreaseQuantity, fav, toggleFav} = useStore();
-
+    const { cart, addToCart, increaseQuantity, decreaseQuantity, fav, toggleFav } = useStore();
     return (
         <>
             <div className="adidas-home">
@@ -33,15 +32,10 @@ const AdidasListing = () => {
                                                 <button onClick={() => increaseQuantity(item.id)}>+</button>
                                             </div>
                                         ) : (
-                                            <button
-                                                className="atc-btn"
-                                                onClick={() => {
-                                                    addToCart(item);
-                                                    toast.success("Item Added Successfully!");
-                                                }}
-                                            >
-                                                Add to Cart
-                                            </button>
+                                            <button className="atc-btn" onClick={() => {
+                                                addToCart(item);
+                                                toast.success("Item Added Successfully!");
+                                            }}> Add to Cart </button>
                                         )}
 
                                         <div className="card-bottom-icons">
