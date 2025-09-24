@@ -44,7 +44,11 @@ export const StoreProvider = ({ children }) => {
         setCart(prevCart =>
             prevCart.map(citem =>
                 citem.id === id
-                    ? { ...citem, quantity: citem.quantity + 1 }
+                    ? { ...citem, quantity: citem.quantity < 5 ? (
+                        citem.quantity + 1
+                    ): (
+                        5
+                    )}
                     : citem
             )
         );

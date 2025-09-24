@@ -13,7 +13,7 @@
     width: 85%;
     margin-top: 15px;
     margin-left: 7.5%;
-    border-radius: 5px;
+    border-radius: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,6 +28,7 @@
     width: 20%;
     display: flex;
     align-items: center;
+    border-radius: inherit;
 }
 
 .nav-logo img {
@@ -113,6 +114,7 @@
     align-items: center;
     justify-content: end;
     padding-right: 30px;
+    border-radius: inherit;
 }
 
 .nav-cart img {

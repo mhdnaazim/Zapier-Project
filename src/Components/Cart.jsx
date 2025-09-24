@@ -79,7 +79,7 @@ const Cart = ({ close }) => {
 
                 <div className="cart-foot">
                     <div className="cart-foot-top">
-                        <h5>Sub-Total</h5>
+                        <h5>Total</h5>
                         <p>₹{subTotal}</p>
                     </div>
                     <div className="cart-foot-mid">

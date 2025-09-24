@@ -229,7 +229,7 @@
 .cart-foot-top h5 {
     color: #262626;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .cart-foot-top p {
@@ -255,6 +255,7 @@
  color: #FFFFFF;
  text-align: center;
  font-size: 17px;
+ font-weight: 600;
  padding: 16px;
  height: 55px;
  width: 80%;

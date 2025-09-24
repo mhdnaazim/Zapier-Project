@@ -8,7 +8,7 @@ import favBlack from "../assets/fav_black.png";
 
 const FilteredProducts = () => {
 
-    const { query, searchedProducts, cart, increaseQuantity, decreaseQuantity, fav, toggleFav, handleAddingProduct } = useStore()
+    const { query, searchedProducts, cart, increaseQuantity, decreaseQuantity, fav, toggleFav, addToCart } = useStore()
 
     return (
         <>
@@ -32,8 +32,10 @@ const FilteredProducts = () => {
                                                 <button onClick={() => increaseQuantity(item.id)}>+</button>
                                             </div>
                                         ) : (
-                                            <button onClick={handleAddingProduct} className="atc-btn">Add to Cart</button>
-                                        )}
+                                            <button className="atc-btn" onClick={() => {
+                                                addToCart(item);
+                                                toast.success("Item Added Successfully!");
+                                            }}> Add to Cart </button>)}
 
                                         <div className="card-bottom-icons">
                                             <img
