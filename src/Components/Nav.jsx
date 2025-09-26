@@ -3,7 +3,6 @@ import './Nav.css'
 import nlogo from '../assets/zap-new.png'
 import cartIcon from '../assets/cart.png'
 import favlogo from '../assets/favourites.png'
-// import wishlist from '../assets/wishlist.png'
 import search from '../assets/search icon.png'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -40,14 +39,6 @@ const Nav = () => {
     }
   }
 
-  // const handleRegister = () => {
-  //   if (LoggedUser) {
-  //     toast.error("Already Logged")
-  //   } else {
-  //     navigate("/")
-  //   }
-  // }
-
   const handleProfile = () => {
     if (!LoggedUser) {
       toast("Please Login")
@@ -82,14 +73,13 @@ const Nav = () => {
   };
 
   const handleCart = () => {
-    if(!LoggedUser){
+    if (!LoggedUser) {
       toast.error("Login to view cart")
       return;
-    }else{
+    } else {
       setIsopen(true)
     }
   }
-
 
   return (
     <>
@@ -109,18 +99,18 @@ const Nav = () => {
           </div>
           {!LoggedUser ? (
             <ul>
-            <li onClick={() => navigate("/home")}>HOME</li>
-            <li onClick={handleProfile}>PROFILE</li>
-            <li onClick={handleLogin}>LOGIN</li>
-            <li onClick={() => navigate("/about")}>ABOUT US</li>
-          </ul>
+              <li onClick={() => navigate("/home")}>HOME</li>
+              <li onClick={handleProfile}>PROFILE</li>
+              <li onClick={handleLogin}>LOGIN</li>
+              <li onClick={() => navigate("/about")}>ABOUT US</li>
+            </ul>
           ) : (
             <ul>
-            <li onClick={() => navigate("/home")}>HOME</li>
-            <li onClick={handleProfile}>PROFILE</li>
-            <li onClick={handleLogout}>LOGOUT</li>
-            <li onClick={() => navigate("/about")}>ABOUT US</li>
-          </ul>
+              <li onClick={() => navigate("/home")}>HOME</li>
+              <li onClick={handleProfile}>PROFILE</li>
+              <li onClick={handleLogout}>LOGOUT</li>
+              <li onClick={() => navigate("/about")}>ABOUT US</li>
+            </ul>
           )}
         </div>
         <div className="nav-cart">

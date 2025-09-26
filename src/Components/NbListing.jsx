@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import './AdidasListing.css'
-import { newbalance } from "../Products";
+import { adidas, newbalance } from "../Products";
 import { useStore } from "./Context/StoreContext";
 import { toast } from "react-toastify";
 import favIcon from "../assets/favourites.png";
@@ -8,6 +8,19 @@ import favBlack from "../assets/fav_black.png";
 
 const NbListing = () => {
     const { cart, addToCart, increaseQuantity, decreaseQuantity, fav, toggleFav } = useStore();
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerpage = 8
+
+    const totalPages = Math.ceil(newbalance.length / itemsPerpage)
+
+    const startIndex = (currentPage - 1) * itemsPerpage
+    const endIndex = startIndex + itemsPerpage
+    const currentData = newbalance.slice(startIndex, endIndex)
+
+    const gotoPage = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
 
     return (
         <>
@@ -17,7 +30,7 @@ const NbListing = () => {
                         <p>ADIDAS ORIGINALS</p>
                     </div>
                     <div className="adidas-listing">
-                        {newbalance.map((item) => {
+                        {currentData.map((item) => {
                             const inCart = cart.find(cartItem => cartItem.id === item.id);
 
                             return (
@@ -57,8 +70,23 @@ const NbListing = () => {
                             );
                         })}
                     </div>
+                    <div className="pagination-buttons">
+                        {currentPage > 1 && (
+                            <button onClick={() => gotoPage(currentPage - 1)}>
+                                Prev
+                            </button>
+                        )}
+
+                        {currentPage < totalPages && (
+                            <button onClick={() => gotoPage(currentPage + 1)}>
+                                Next
+                            </button>
+                        )}
+                    </div>
                 </div>
             </div>
+
+
         </>
     )
 }

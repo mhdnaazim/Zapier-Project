@@ -26,9 +26,12 @@ const Signup = () => {
             return;
         }
 
-        //Email Format 
+        if(number.startsWith("0")){
+            toast.error("Enter a valid number")
+        }
+
         const emailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(lowerEmail)) {
             toast.error("Please enter a valid email address");
             return;
         }

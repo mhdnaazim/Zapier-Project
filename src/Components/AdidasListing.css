@@ -149,6 +149,31 @@
     color: #fff;
 }
 
+.pagination-buttons{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.pagination-buttons button{
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #c2bebe;
+    border-radius: 5px;
+    height: 40px;
+    width: 100px;
+}
+
+.pagination-buttons button:hover{
+    background-color: #000;
+    color: #fff;
+    border: none;
+}
+
 /* Amimation */
 @keyframes fadeInUp {
   0% {

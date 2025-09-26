@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './AdidasListing.css';
 import { adidas } from "../Products";
 import { useStore } from "./Context/StoreContext";
@@ -8,6 +8,20 @@ import favBlack from "../assets/fav_black.png";
 
 const AdidasListing = () => {
     const { cart, addToCart, increaseQuantity, decreaseQuantity, fav, toggleFav } = useStore();
+
+    const [currentPage, setCurrentPage] = useState(1)
+    const itemsPerpage = 8
+
+    const totalPages = Math.ceil(adidas.length / itemsPerpage)
+
+    const startIndex = (currentPage - 1) * itemsPerpage
+    const endIndex = startIndex + itemsPerpage
+    const currentData = adidas.slice(startIndex, endIndex)
+
+    const gotoPage = (pageNumber) => {
+        setCurrentPage(pageNumber)
+    }
+
     return (
         <>
             <div className="adidas-home">
@@ -16,7 +30,7 @@ const AdidasListing = () => {
                         <p>ADIDAS ORIGINALS</p>
                     </div>
                     <div className="adidas-listing">
-                        {adidas.map((item) => {
+                        {currentData.map((item) => {
                             const inCart = cart.find(cartItem => cartItem.id === item.id);
 
                             return (
@@ -48,6 +62,21 @@ const AdidasListing = () => {
                                 </div>
                             );
                         })}
+
+                    </div>
+                    <div className="pagination-buttons">
+
+                        {currentPage > 1 && (
+                            <button onClick={() => gotoPage(currentPage - 1)}>
+                                Prev
+                            </button>
+                        )}
+
+                        {currentPage < totalPages && (
+                            <button onClick={() => gotoPage(currentPage + 1)}>
+                                Next
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Lilita+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.pagination-main{
+    height: min-content;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    gap: 30px;
+    padding: 80px 0;
+}
+
+.pagination-cards{
+    background-color: rgb(31, 167, 221);
+    height: 200px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.pagination-cards h5{
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.pagination-cards h6{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.pagination-cards p{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.pagination-btn{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.pagination-btn button{
+    background-color: transparent;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border: 1px solid #a3a2a2;
+    outline: none;
+}
+
+.pagination-btn button:hover {
+    background-color: #000;
+    color: #fff;
+}

@@ -2,10 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { StoreProvider } from "./Components/Context/StoreContext";
-import Signup from "./Components/SignUp";
 import Login from "./Components/Login";
 import Home from "./Components/Home";
-import ProfileSection from "./Components/ProfileSection";
 import Adidas from "./Components/Adidas";
 import Nike from "./Components/Nike";
 import Puma from "./Components/Puma";
@@ -15,6 +13,8 @@ import Cart from "./Components/Cart";
 import Favourites from "./Components/Favourites";
 import About from "./Components/About";
 import Profile from "./Components/Profile";
+import Signup from "./Components/Signup";
+import Pagination from "./Components/Pagination";
 
 const App = () => {
   return (
@@ -35,6 +35,8 @@ const App = () => {
             <Route path="/cart" element={<Cart/>} />
             <Route path="/favourites" element={<Favourites/>} />
             <Route path="/about" element={<About/>} />
+            <Route path="/pagination" element={<Pagination/>} />
+            
 
           </Routes>
           <ToastContainer
