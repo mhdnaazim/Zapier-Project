@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Login.css'
+import './Login.css';
 import whitelogo from '../assets/zapierWhite.png'
 import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -12,7 +12,7 @@ const Login = () => {
     })
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
     const handleLogin = () => {

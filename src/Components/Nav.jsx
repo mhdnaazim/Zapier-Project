@@ -15,7 +15,7 @@ const Nav = () => {
   const [input, setInput] = useState("")
   const [isOpen, setIsopen] = useState(false)
   const navigate = useNavigate()
-  const LoggedUser = JSON.parse(localStorage.getItem("LoggedUser"))
+  const LoggedUser = JSON.parse(localStorage.getItem("LoggedUser"))     
 
   const closeCart = () => {
     setIsopen(false)
@@ -28,8 +28,8 @@ const Nav = () => {
       toast.error("Already Logged")
     } else {
       navigate("/login")
-    }
-  }
+    };
+  };
 
   const handleLogo = () => {
     if (location.pathname === "/home") {
